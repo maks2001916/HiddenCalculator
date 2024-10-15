@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Hidden Calculator</string>
+    <string name="calculator">Калькулятор</string>
+    <string name="sub">-</string>
+    <string name="mul">*</string>
+    <string name="div">/</string>
+    <string name="sum">+</string>
+    <string name="transfer_data">Передать данные</string>
+</resources>
