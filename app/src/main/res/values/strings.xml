@@ -6,4 +6,5 @@
     <string name="div">/</string>
     <string name="sum">+</string>
     <string name="transfer_data">Передать данные</string>
+    <string name="result">Результат</string>
 </resources>
