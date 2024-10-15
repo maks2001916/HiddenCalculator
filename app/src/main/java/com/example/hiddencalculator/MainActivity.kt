@@ -5,7 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -28,8 +30,23 @@ class MainActivity : AppCompatActivity() {
 
         resultTV = findViewById(R.id.resultTV)
         calculatorBTN = findViewById(R.id.buttonCalcBTN)
-        calculatorBTN.setOnClickListener() {
-            val intent = Intent(this, SecondActivity::class.java)
+        calculatorBTN.setOnClickListener {
+            val intent = Intent(this, CalculatorActivity::class.java)
+            startActivity(intent)
+            launchSomeActivity.launch(intent)
+        }
+    }
+
+    private val launchSomeActivity = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        result ->
+        if (result.resultCode == RESULT_OK) {
+            val data = result.data
+            resultTV.setText(data!!.getStringExtra("res").toString())
+            Toast.makeText(this, "$data", Toast.LENGTH_LONG).show()
+
+        } else {
 
         }
     }
