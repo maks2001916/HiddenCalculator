@@ -32,14 +32,11 @@ class MainActivity : AppCompatActivity() {
         calculatorBTN = findViewById(R.id.buttonCalcBTN)
         calculatorBTN.setOnClickListener {
             val intent = Intent(this, CalculatorActivity::class.java)
-            startActivityForResult(intent, 1)
+            startActivity(intent)
             launchSomeActivity.launch(intent)
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-    }
 
     private val launchSomeActivity = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -47,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         result ->
         if (result.resultCode == RESULT_OK) {
             val data = result.data
-            resultTV.setText(data!!.getStringExtra("res").toString())
+            resultTV.text = data!!.getIntExtra("res", 0).toString()
             Toast.makeText(this, "$data", Toast.LENGTH_LONG).show()
 
         } else {
