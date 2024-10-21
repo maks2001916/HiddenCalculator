@@ -32,9 +32,13 @@ class MainActivity : AppCompatActivity() {
         calculatorBTN = findViewById(R.id.buttonCalcBTN)
         calculatorBTN.setOnClickListener {
             val intent = Intent(this, CalculatorActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, 1)
             launchSomeActivity.launch(intent)
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     private val launchSomeActivity = registerForActivityResult(
